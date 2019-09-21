@@ -2,7 +2,7 @@
 #AUTHOR: JACKSON PERRY
 
 #first, we load in the data file
-load('/Users/jacksonperry/Desktop/Fall1/LeukError.RData')
+load('/Users/jacksonperry/Downloads/LeukError.RData')
 
 #explore data
 leuk[1,1:10]
