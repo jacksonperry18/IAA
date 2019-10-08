@@ -9,6 +9,7 @@ leuk[1,1:10]
 leuk[1,5001]
 leuk[,5001]
 table(leuk$V5001)
+#yo
 
 #plot random data
 pal=palette(brewer.pal(n = 3, name = "Set1"))
