@@ -12,7 +12,7 @@ df <- read_csv("Desktop/Fall 2/TS/TS_proj_agg.csv")
 Y_t <- ts(df$PM25[1:54],frequency=12)
 X_ts <- as.matrix(df[1:54,4:14])
 Y_ttest <- ts(df$PM25[55:60])
-
+ 
 ########################
 #Plot and look at ACF, PACF
 ########################
@@ -54,7 +54,7 @@ pacf(model.2$residuals, lag.max=24)
 Box.test(model.2$residuals, lag = 24, type = c("Ljung-Box"))
 White.LB <- rep(NA, 10)
 for(i in 1:24){
-  White.LB[i] <- Box.test(model.2$residuals, lag = i, type = "Ljung", fitdf = 4)$p.value
+  White.LB[i] <- Box.test(model.2$residuals, lag = i, type = "Ljung", fitdf = 1)$p.value
 }
 White.LB <- pmin(White.LB, 0.2)
 barplot(White.LB, main = "Ljung-Box Test P-values", ylab = "Probabilities", xlab = "Lags", ylim = c(0, 0.2))
