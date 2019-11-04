@@ -112,14 +112,16 @@ pump_haz[is.na(pump_haz) == TRUE] <- 0
 print(pump_haz)
 pump_haz$gp <- factor(pump_haz$gp)
 
-ggplot(data=pump_haz, aes(x=time, y=hp, group=gp, color=gp, color_palette(palette=c("purple", "red", "blue", "green")))) +
-          theme_minimal() +
-        theme_bw() +
+ggplot(data=pump_haz, aes(x=time, y=hp, group=gp, color=gp)) +
+        theme_classic() +
+        theme(title = element_text(size=13), axis.text = element_text(size=12, color='black'), legend.text = element_text(size=10), legend.title = element_text(size=10)) +
+        theme(legend.position="bottom") +
+        scale_y_continuous(breaks=c(0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1.0)) + 
          xlab("Hour") +
          ylab("Hazard Probability") +
          ggtitle("Hazard Probability By Failure Reason") +
-         scale_color_hue(name="Failure Reason", labels = c("Flood","Motor","Surge", "Jammed")) +
-         geom_line()
+         scale_color_manual(name="Failure Reason", labels = c("Flood","Motor","Surge", "Jammed"), values=c("purple", "red", "blue", "green")) +
+         geom_line(size=1)
 
 
 ###################################
