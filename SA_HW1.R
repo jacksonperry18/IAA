@@ -126,6 +126,18 @@ ggplot(data=pump_haz, aes(x=time, y=hp, group=gp, color=gp, color_palette(palett
 #flood/surge VS motor/jammed comparison
 ###################################
 
+dfail$theirs <- dfail$reason %% 2
+#0 corresponds to motor/jammed, 1 to flood/surge
+dfail$ours <- ceiling(sqrt(dfail$reason) %% 1)
+#0 corresponds to flood/jammed, 1 to motor/surge
+
+#their categories statistical difference test
+survdiff(pump_surv ~ theirs, rho = 0, data = dfail)
+
+#our categories statistical difference test
+survdiff(pump_surv ~ ours, rho = 0, data = dfail)
+
+
 
 
 
